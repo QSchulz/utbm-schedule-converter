@@ -14,38 +14,41 @@ public class Creneau {
 	private String salle = null;
 
 	public Creneau(String line) {
-		int i = 1;
+		int i = 0;
 		String[] infos = line.split("[\\t ]");
-		this.site = infos[0];
-		while(infos[i].isEmpty()) {
+		if (infos[0].startsWith("Sevenans") || infos[0].startsWith("Belfort")
+				|| infos[0].startsWith("Montb")) {
+			i++;
+		}
+		while (infos[i].isEmpty()) {
 			i++;
 		}
 		this.codeUV = infos[i++];
-		while(infos[i].isEmpty()) {
+		while (infos[i].isEmpty()) {
 			i++;
 		}
 		this.type = infos[i++];
-		while(infos[i].isEmpty()) {
+		while (infos[i].isEmpty()) {
 			i++;
 		}
 		this.groupe = Integer.parseInt(infos[i++]);
-		while(infos[i].isEmpty()) {
+		while (infos[i].isEmpty()) {
 			i++;
 		}
 		this.jour = infos[i++];
-		while(infos[i].isEmpty()) {
+		while (infos[i].isEmpty()) {
 			i++;
 		}
 		this.heureDebut = infos[i++];
-		while(infos[i].isEmpty()) {
+		while (infos[i].isEmpty()) {
 			i++;
 		}
 		this.heureFin = infos[i++];
-		while(infos[i].isEmpty()) {
+		while (infos[i].isEmpty()) {
 			i++;
 		}
 		this.frequence = Integer.parseInt(infos[i++]);
-		while(infos[i].isEmpty()) {
+		while (infos[i].isEmpty()) {
 			i++;
 		}
 		this.salle = infos[i];
@@ -53,9 +56,9 @@ public class Creneau {
 
 	private String getOldDay() {
 		if (this.jour.startsWith("m")) {
-			return this.jour.substring(0,2).toUpperCase();
+			return this.jour.substring(0, 2).toUpperCase();
 		}
-		return this.jour.substring(0,1).toUpperCase();
+		return this.jour.substring(0, 1).toUpperCase();
 	}
 
 	private String getOldTime(String time) {

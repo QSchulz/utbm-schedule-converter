@@ -14,7 +14,7 @@ public class Main extends JFrame implements ActionListener {
 	private MenuBar mbar = new MenuBar();
 	private Menu menu = new Menu("Menu");
 	private MenuItem convert = new MenuItem("Convertir");
-	
+
 	public Main() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.add(textArea);
@@ -23,22 +23,28 @@ public class Main extends JFrame implements ActionListener {
 		menu.addActionListener(this);
 		this.setMenuBar(mbar);
 		this.setTitle("UTBM Schedule Converter");
-		this.setSize(600,400);
+		this.setSize(600, 400);
 		this.setVisible(true);
 	}
 
 	private void translate() {
+		boolean begin = false;
 		String oldSchedule = "";
 		String[] lines = this.textArea.getText().split("\n");
 		for (String line : lines) {
-			if (line.startsWith("Sevenans") || line.startsWith("Belfort")
-					|| line.startsWith("Montb")) {
+			if (line.isEmpty()) {
+				continue;
+			}
+			if (begin) {
 				oldSchedule += new Creneau(line).printOld() + "\n";
 			}
+			if (line.startsWith("Site")) {
+				begin = true;
+			}
 		}
-		
+
 		this.textArea.setText(oldSchedule);
-		
+
 	}
 
 	public static void main(String[] args) {
@@ -46,6 +52,6 @@ public class Main extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
-		this.translate();		
+		this.translate();
 	}
 }
