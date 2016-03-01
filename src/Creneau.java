@@ -15,7 +15,7 @@ public class Creneau {
 
 	public Creneau(String line) {
 		int i = 1;
-		String[] infos = line.split(" ");
+		String[] infos = line.split("[\\t ]");
 		this.site = infos[0];
 		while(infos[i].isEmpty()) {
 			i++;
