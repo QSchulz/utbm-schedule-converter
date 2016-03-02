@@ -80,17 +80,4 @@ public class Creneau {
 						: "") + " en " + this.salle;
 	}
 
-	public String printNew() {
-		List<String> strings = new ArrayList<String>();
-		strings.add(this.site);
-		strings.add(this.codeUV);
-		strings.add(this.type + " " + this.groupe);
-		strings.add(this.jour);
-		strings.add(this.heureDebut);
-		strings.add(this.heureFin);
-		strings.add("" + this.frequence);
-		strings.add(this.salle);
-		return String.join("\t", strings);
-	}
-
 }
