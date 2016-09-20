@@ -38,7 +38,7 @@ public class Main extends JFrame implements ActionListener {
 			if (begin) {
 				oldSchedule += new Creneau(line).printOld() + "\n";
 			}
-			if (line.startsWith("Site")) {
+			if (line.startsWith("Site") || line.startsWith("UV")) {
 				begin = true;
 			}
 		}
